@@ -1,0 +1,158 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Zoom-in streaks make it more clear and zooms in as a 3d effect*/
+@keyframes streakZoomLong {
+  0% {
+    transform: perspective(1000px) scaleY(1) scaleX(1);
+    opacity: 0;
+  }
+  20% {
+    opacity: 1;
+  }
+  100% {
+    transform: perspective(1000px) scaleY(6) scaleX(2.5);
+    opacity: 1;
+  }
+}
+/**/
+.netflix-streaks {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+
+  background-image: repeating-linear-gradient(
+    to right,
+
+    /* Dark Red */
+    rgba(180, 30, 30, 0.8) 0px,
+    rgba(160, 20, 20, 0.9) 3px,
+    black 12px,
+
+    /* Deep Pink */
+    rgba(180, 60, 120, 0.8) 15px,
+    rgba(160, 50, 100, 0.9) 18px,
+    black 28px,
+
+    /* Muted Purple */
+    rgba(120, 60, 160, 0.75) 30px,
+    rgba(100, 40, 140, 0.85) 34px,
+    black 46px,
+
+    /* Deep Blue */
+    rgba(30, 60, 150, 0.8) 50px,
+    rgba(20, 40, 130, 0.9) 54px,
+    black 68px,
+
+    /* Cyan-Blue */
+    rgba(40, 100, 160, 0.8) 72px,
+    rgba(30, 80, 140, 0.9) 76px,
+    black 90px,
+
+    /* Vivid Purple */
+    rgba(100, 30, 160, 0.85) 94px,
+    rgba(80, 20, 140, 0.95) 98px,
+    black 112px
+  );
+
+  background-size: 800% 100%;
+  background-repeat: repeat;
+  filter: blur(2px) brightness(2.2) contrast(1.4);
+  mix-blend-mode: screen;
+  transform-origin: center center;
+  opacity: 0;
+
+  animation: streakZoomLong 3s ease-in-out forwards;
+}
+
+
+/* fade in to go from 0 to 1 for letters*/
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+/* glows as it fades in */
+@keyframes glowPulse {
+  0% { text-shadow: none; }
+  25% {
+    text-shadow: 0 0 8px rgba(229, 9, 20, 0.4),
+                 0 0 16px rgba(229, 9, 20, 0.3);
+  }
+  75%, 100% {
+    text-shadow: 0 0 12px rgba(229, 9, 20, 0.5),
+                 0 0 24px rgba(229, 9, 20, 0.4);
+  }
+}
+
+@keyframes zoomIntoRainbow {
+  0% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  40% {
+    color: transparent;
+    -webkit-text-fill-color: transparent;
+  }
+  100% {
+    opacity: 0;
+    transform: scale(1.5, 30);
+  }
+}
+
+@keyframes fadeToBlack {
+  0% { opacity: 0; }
+  100% { opacity: 1; }
+}
+
+
+/* letter animation for the letters and the rotation to make the logo and made it  fade in with a glow */
+.letter {
+  opacity: 0;
+  color: #e50914;
+  animation: fadeIn 2s ease-out forwards;
+  transform-origin: center;
+}
+
+.glow-animated {
+  animation: glowPulse 2s ease-out forwards;
+}
+
+.letter-0 {
+  animation-delay: 0.2s;
+  transform: rotate(-8deg) translateY(0.08em);
+  margin-right: 0.05em;
+}
+.letter-1 {
+  animation-delay: 0.4s;
+  transform: rotate(-3deg) translateY(0.03em);
+  margin-right: 0.03em;
+}
+.letter-2 {
+  animation-delay: 0.6s;
+  transform: rotate(0deg) translateY(0em);
+  margin: 0 0.03em;
+}
+.letter-3 {
+  animation-delay: 0.8s;
+  transform: rotate(3deg) translateY(0.03em);
+  margin-left: 0.03em;
+}
+.letter-4 {
+  animation-delay: 1s;
+  transform: rotate(8deg) translateY(0.08em);
+  margin-left: 0.05em;
+}
+
+/* zooms into a rainbow are some time for a bit */
+.zoom-in {
+  animation: zoomIntoRainbow 1.5s ease-in-out forwards;
+}
+
+/* fade into black from rainbow */
+.fade-to-black {
+  animation: fadeToBlack 0.5s ease-in forwards;
+}
