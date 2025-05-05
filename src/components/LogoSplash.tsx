@@ -11,7 +11,13 @@ const LogoSplash: React.FC = () => {
   const [fadeOut, setFadeOut] = useState(false);
   const [showProfiles, setShowProfiles] = useState(false);
 
+  /* 
+    Use effect hook - perform side effects handles two main job. 
+    Wait for the user's first click to start playing audio
+    Once the audio starts, it triggers a series of animations - zoom, rainbow streaks, fade out, show profiles
+  */
   useEffect(() => {
+    // makes the audio reference play and then set the start to true, removes the click listener
     const handleFirstClick = () => {
       if (audioRef.current) {
         audioRef.current
@@ -27,6 +33,7 @@ const LogoSplash: React.FC = () => {
     let fadeTimer: NodeJS.Timeout;
     let profileTimer: NodeJS.Timeout;
 
+    // this will start as soon as started - audio plays, then zoom, streak, fade, and profile shows
     if (started) {
       // triggers zoom, rainbow streaks, and then fades
       zoomTimer = setTimeout(() => setZoom(true), 3000);
@@ -36,7 +43,9 @@ const LogoSplash: React.FC = () => {
     }
 
     window.addEventListener("click", handleFirstClick);
+
     return () => {
+      // remove the event listener for click, zoom timer, streak timer, fade, and profile so it is cleared
       window.removeEventListener("click", handleFirstClick);
       clearTimeout(zoomTimer);
       clearTimeout(streakTimer);
@@ -45,15 +54,18 @@ const LogoSplash: React.FC = () => {
     };
   }, [started]);
 
+  // show the profuke
   if (showProfiles) return <ProfileSelection />;
 
   return (
     <div className="relative h-screen w-screen bg-black flex items-center justify-center overflow-hidden">
+      {/*When the audio ref is true then play this audio */}
       <audio ref={audioRef} src="/nouveau-jingle-netflix.mp3" preload="auto" />
-      {/* {Shows the streaks} */}
+      {/* {Shows the streaks as audio is done} */}
       {started && showStreaks && (
         <div className="netflix-streaks z-0 pointer-events-none" />
       )}
+      {/* zooms the letters (First) */}
       {started && (
         <div className="flex z-10 text-7xl md:text-8xl lg:text-9xl font-extrabold tracking-tight font-[Bebas Neue] glow-animated">
           {letters.map((letter, index) => (

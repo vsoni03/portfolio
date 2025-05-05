@@ -1,6 +1,8 @@
 import React, { useEffect, useRef, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import "../stylesheets/Profile.css";
 
+// different profiles for the netflix profiles
 const profiles = [
   {
     name: "Recruiter",
@@ -16,12 +18,16 @@ const profiles = [
   },
 ];
 
-const handleProfileClick = (name: string) => {
-  `/profile/${name.toLowerCase()}`;
-};
-
 const ProfileSelection: React.FC = () => {
+  const navigate = useNavigate();
+
+  const handleProfileClick = (name: string) => {
+    // click it to navigate for the path for the profile
+    navigate(`/profile/${name.toLowerCase()}`);
+  };
+
   return (
+    // create a screen for the who's watching - then the profiles are displayed, the profile image and navigate to the profile.
     <div className="h-screen w-screen bg-black text-white flex flex-col items-center justify-center space-y-10">
       <h1 className="text-3xl md:text-5xl font-bold">Who's watching?</h1>
       <div className="flex flex-wrap justify-center gap-8">
@@ -29,6 +35,7 @@ const ProfileSelection: React.FC = () => {
           <div
             key={index}
             onClick={() => handleProfileClick(profile.name)}
+            // makes the cursor diffeent when clicking it
             className="flex flex-col items-center cursor-pointer group transition-transform duration-200 hover:scale-105"
           >
             <img
