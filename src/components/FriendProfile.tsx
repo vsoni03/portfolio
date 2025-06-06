@@ -11,7 +11,7 @@ import {
 import { BsInfoCircle } from "react-icons/bs";
 
 const profileOptions = [
-  { name: "Recruiter", image: "/images/blue.png" },
+  { name: "Recruiter", image: "public/images/blue.png" },
   { name: "Friend", image: "/images/yellow.png" },
   { name: "Stalker", image: "/images/red.png" },
 ];
@@ -185,7 +185,7 @@ const FriendProfile: React.FC = () => {
           {/* Navigation Links - all inline */}
           <nav className="flex items-center gap-x-4 text-white text-sm font-medium">
             <a
-              href="https://docs.google.com/document/d/1nptZ0FV9AroeSsB0kIWgN1BQX8TW-lpg/edit?usp=sharing&ouid=109617576304378465245&rtpof=true&sd=true"
+              href="https://drive.google.com/file/d/1bbp15ZPL9fW7pDJ8doT9K8RJcOPvNyNf/view?usp=sharing"
               target="_blank"
               rel="noopener noreferrer"
               className="hover:text-gray-500"

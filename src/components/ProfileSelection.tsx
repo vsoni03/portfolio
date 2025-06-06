@@ -6,15 +6,15 @@ import "../stylesheets/Profile.css";
 const profiles = [
   {
     name: "Recruiter",
-    image: "src/images/blue.png",
+    image: "images/blue.png",
   },
   {
     name: "Friend",
-    image: "src/images/yellow.png",
+    image: "images/yellow.png",
   },
   {
     name: "Stalker",
-    image: "src/images/red.png",
+    image: "images/red.png",
   },
 ];
 
