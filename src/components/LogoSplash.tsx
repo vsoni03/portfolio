@@ -65,6 +65,14 @@ const LogoSplash: React.FC = () => {
       {started && showStreaks && (
         <div className="netflix-streaks z-0 pointer-events-none" />
       )}
+      {/* Click-to-start prompt */}
+      {!started && (
+        <div className="absolute top-0 left-0 w-full h-full flex items-center justify-center z-30 pointer-events-none">
+          <p className="text-white text-xl md:text-2xl font-semibold">
+            Click anywhere to start your experience...
+          </p>
+        </div>
+      )}
       {/* zooms the letters (First) */}
       {started && (
         <div className="flex z-10 text-7xl md:text-8xl lg:text-9xl font-extrabold tracking-tight font-[Bebas Neue] glow-animated">
